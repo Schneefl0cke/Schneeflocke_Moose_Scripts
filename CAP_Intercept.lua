@@ -65,11 +65,26 @@ end
 _fighter_command:AddBorderZone(_homeland)
 _fighter_command:SetTacticalOverviewOn()
 
-SETUP_FIGHTER_COMMAND_AIRWING()
-SETUP_FIGHTER_COMMAND_CAP_ZONES() -- CAP is only spawned at day!
-_fighter_command:__Start(1)
 
-function SETUP_FIGHTER_COMMAND_AIRWING()
+
+local function GetFighterGroupingCount()
+    local _2ship = _propability_1_ship_flight + _propability_2_ship_flight
+    local _3ship = _2ship + _propability_3_ship_flight
+    local _4ship = _3ship + _propability_4_ship_flight
+    local prop = math.random(_4ship)
+
+    if prop < _propability_1_ship_flight then
+        return 1
+    elseif prop < _2ship then
+        return 2
+    elseif prop < _3ship then
+        return 3
+    elseif prop < _4ship then
+        return 4
+    end
+end
+
+local function setup_airwings()
 
     --- AIRWING 1
     local _airwing_1=AIRWING:New(_warehouse_1, _airwing_1_name) --Ops.AirWing#AIRWING
@@ -107,7 +122,7 @@ function SETUP_FIGHTER_COMMAND_AIRWING()
     end
 end
 
-function SETUP_FIGHTER_COMMAND_CAP_ZONES()
+local function setup_cap_zones()
     -- CAP only between 0500 and 20000
 	if (timer.getAbsTime() > 18000 and timer.getAbsTime() < 72000) then
 		--CAP Zones
@@ -117,20 +132,6 @@ function SETUP_FIGHTER_COMMAND_CAP_ZONES()
 	end
 end
 
-
-function GetFighterGroupingCount()
-    local _2ship = _propability_1_ship_flight + _propability_2_ship_flight
-    local _3ship = _2ship + _propability_3_ship_flight
-    local _4ship = _3ship + _propability_4_ship_flight
-    local prop = math.random(_4ship)
-
-    if prop < _propability_1_ship_flight then
-        return 1
-    elseif prop < _2ship then
-        return 2
-    elseif prop < _3ship then
-        return 3
-    elseif prop < _4ship then
-        return 4
-    end
-end
+setup_airwings()
+setup_cap_zones() -- CAP is only spawned at day!
+_fighter_command:__Start(1)
