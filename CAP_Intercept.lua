@@ -50,10 +50,6 @@ local _propability_3_ship_flight = 0
 local _propability_4_ship_flight = 20
 --
 
---------------------------------------
---| CHANGE BELOW HERE AT OWN RISK! |--
---------------------------------------
-
 -- Chief Setup
 local _agents=SET_GROUP:New():FilterPrefixes(_name_prefix_of_EWR_Units):FilterOnce()
 local _fighter_command
@@ -64,8 +60,6 @@ else
 end
 _fighter_command:AddBorderZone(_homeland)
 _fighter_command:SetTacticalOverviewOn()
-
-
 
 local function GetFighterGroupingCount()
     local _2ship = _propability_1_ship_flight + _propability_2_ship_flight
