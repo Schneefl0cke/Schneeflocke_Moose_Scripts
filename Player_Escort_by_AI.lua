@@ -1,11 +1,12 @@
 -- AI Planes will escort the client when this script is executed.
+-- You can also add SEAD or A2G Escorts just like this.
 -- In my missions I activate the Escort group with a radio command. This will simultaniousely call this script.
 -- It could also be made so, that the Escort spawns on the ground, but you would have to wait for them to startup
 
 -- Variables --
 local _escortee_name = "Players-1" -- the unit name of the plane that shall be escorted
-local _escort_group_nameprefix = "BLUE_ESCORT" -- all groups with this name will be added as escort. I place them as inactive in the air and activate them with the same radio call that calls this script
-local _escort_callsign = "Witwenmacher"
+local _escort_group_nameprefix = "BLUE_A2A_ESCORT" -- all groups with this name will be added as escort. I place them as inactive in the air and activate them with the same radio call that calls this script
+local _escort_callsign = "A2A Witwenmacher"
 local _coalition = "blue" -- change red or blue
 local _startMessage = "Escort 'Witwenmacher' is on station!"
 
