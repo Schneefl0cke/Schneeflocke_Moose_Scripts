@@ -4,17 +4,19 @@
 
 -- Variables --
 local _escortee_name = "Players-1" -- the unit name of the plane that shall be escorted
-local _escort_prefix = "BLUE_ESCORT" -- all planes with this prefix will escort the escortee
+local _escort_group_nameprefix = "BLUE_ESCORT" -- all groups with this name will be added as escort. I place them as inactive in the air and activate them with the same radio call that calls this script
 local _escort_callsign = "Witwenmacher"
 local _coalition = "blue" -- change red or blue
 local _startMessage = "Escort 'Witwenmacher' is on station!"
 
 -- MOOSE Code --
 
+env.info("Starting Schneeflocke A2A Escort Script", false)
+
 local _messageToCoalition = MESSAGE:New( _escortee_name .. " is now escorted by " .. _escort_callsign .. "!")
 _messageToCoalition:ToCoalition( coalition.side.BLUE )
 
-local _escort_group = SET_GROUP:New():FilterCategories( { "plane" } ):FilterCoalitions( _coalition ):FilterPrefixes( { _escort_prefix } ):FilterStart()
+local _escort_group = SET_GROUP:New():FilterCategories( { "plane" } ):FilterCoalitions( _coalition ):FilterPrefixes( { _escort_group_nameprefix } ):FilterStart()
 local _escortee = UNIT:FindByName( _escortee_name )
 local _escort = AI_ESCORT:New( _escortee, _escort_group, _escort_callsign, _startMessage )
 _escort:FormationTrail( 100, 100 , 0 )
@@ -22,3 +24,5 @@ _escort:MenusAirplanes()
 _escort:_FlightROEWeaponFree("Weapons free!")
 _escort:_FlightROTEvadeFire("Evading fire!")
 _escort:__Start( 2 )
+
+env.info("Finished A2A escort script", false)
