@@ -1,4 +1,5 @@
 -- Spawns random ships at the center of designated zones. I use it for civilian ships
+env.info("Starting Schneeflocke Random Ship Spwan script", false)
 
 local ship_names = {'Ziv_Naval-5', 'Ziv_Naval-4', 'Ziv_Naval-3', 'Ziv_Naval-2', 'Ziv_Naval-1'}
 local zone_name_prefix = "shipSpawn-" -- name of your trigger zone. You must add a number, starting with 1 at the end
@@ -19,6 +20,7 @@ Spawn_civil_ships = SPAWN:New( "Ziv_Naval-5" ) -- the parameter just has to cont
 :InitRandomizeRoute(0, 2, 5000)
 
 local ship_Count = math.random(minnimum_ships, maximum_ships)
+env.info("Spawning " .. ship_Count .. " ships.", false)
 -- ***** SPAWN
 for count = 1, ship_Count, 1 do
 	Spawn_civil_ships:Spawn()
