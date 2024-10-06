@@ -108,7 +108,7 @@ local function setup_airwing_1 ()
         local _available_fighters = math.random(_fighter_min, _fighter_max)
         local _squadron = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_1_name)
         local _grouping = GetFighterGroupingCount()
-        env.info("Squadron 1 Bandar Abbas spawned with " .. _available_fighters .. "fighters and a grouping of " .. _grouping, false)
+        env.info("Squadron 1 Bandar Abbas spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
         _squadron:SetGrouping(_grouping) -- Random grouping
 	    _squadron:SetModex(100)  -- Tail number of the sqaud start with 130, 131,...
 	    _squadron:AddMissionCapability({AUFTRAG.Type.INTERCEPT}, _fighter_type_1_capability) -- Squad can do intercept missions.
@@ -126,7 +126,7 @@ local function setup_airwing_1 ()
         local _available_fighters = math.random(_fighter_min, _fighter_max)
         local _squadron_2 = SQUADRON:New(_fighter_type_2, _available_fighters, _name_of_faction .. _squadron_2_name)
         local _grouping = GetFighterGroupingCount()
-        env.info("Squadron 2 Bandar Abbas spawned with " .. _available_fighters .. "fighters and a grouping of " .. _grouping, false)
+        env.info("Squadron 2 Bandar Abbas spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
         _squadron_2:SetGrouping(_grouping) -- Random grouping
         _squadron_2:SetModex(200)  -- Tail number of the sqaud start with 130, 131,...
         _squadron_2:AddMissionCapability({AUFTRAG.Type.INTERCEPT}, _fighter_type_2_capability) -- Squad can do intercept missions.
@@ -153,7 +153,7 @@ local function setup_airwing_2()
         local _available_fighters = math.random(_fighter_min, _fighter_max)
         local _squadron_3 = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_3_name)
         local _grouping = GetFighterGroupingCount()
-        env.info("Squadron 3 Kish spawned with " .. _available_fighters .. "fighters and a grouping of " .. _grouping, false)
+        env.info("Squadron 3 Kish spawned with " .. _available_fighters .. "scriptfighters and a grouping of " .. _grouping, false)
         _squadron_3:SetGrouping(_grouping) -- Random grouping
 	    _squadron_3:SetModex(300)  -- Tail number of the sqaud start with 130, 131,...
 	    _squadron_3:AddMissionCapability({AUFTRAG.Type.INTERCEPT}, _fighter_type_1_capability) -- Squad can do intercept missions.

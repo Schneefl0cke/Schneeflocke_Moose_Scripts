@@ -10,6 +10,7 @@
 math.random()
 math.random()
 math.random()
+env.info("Starting CAP Script", false)
 -- ****
 
 -- General variables
@@ -95,7 +96,9 @@ local function setup_airwings()
     if math.random(_readiness_fighter_1) < 100 then
         local _available_fighters = math.random(_fighter_min, _fighter_max)
         local _squadron = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_1_name)
-        _squadron:SetGrouping(GetFighterGroupingCount()) -- Random grouping
+        local _grouping = GetFighterGroupingCount()
+        env.info("Squadron 1 spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
+        _squadron:SetGrouping(_grouping) -- Random grouping
 	    _squadron:SetModex(100)  -- Tail number of the sqaud start with 130, 131,...
 	    _squadron:AddMissionCapability({AUFTRAG.Type.INTERCEPT}, _fighter_type_1_capability) -- Squad can do intercept missions.
         _squadron:AddMissionCapability({AUFTRAG.Type.ALERT5})        -- Squad can be spawned at the airfield in uncontrolled state.
@@ -103,13 +106,17 @@ local function setup_airwings()
 	    local missionrange = math.random(_mission_range_min, _mission_range_max)
 	    _squadron:SetMissionRange(missionrange) -- Squad will be considered for targets within 200 NM of its airwing location.
 	    _airwing_1:AddSquadron(_squadron)
+    else
+        env.info("Squadron 1 did not spawn", false)
     end 
 
     -- SQUADRON 2
     if math.random(_readiness_fighter_2) < 100 then
         local _available_fighters = math.random(_fighter_min, _fighter_max)
         local _squadron_2 = SQUADRON:New(_fighter_type_2, _available_fighters, _name_of_faction .. _squadron_2_name)
-        _squadron_2:SetGrouping(GetFighterGroupingCount()) -- Random grouping
+        local _grouping = GetFighterGroupingCount()
+        env.info("Squadron 2 spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
+        _squadron:SetGrouping(_grouping) -- Random grouping
         _squadron_2:SetModex(200)  -- Tail number of the sqaud start with 130, 131,...
         _squadron_2:AddMissionCapability({AUFTRAG.Type.INTERCEPT}, _fighter_type_2_capability) -- Squad can do intercept missions.
         _squadron_2:AddMissionCapability({AUFTRAG.Type.ALERT5})        -- Squad can be spawned at the airfield in uncontrolled state.
@@ -117,6 +124,8 @@ local function setup_airwings()
         local missionrange = math.random(_mission_range_min, _mission_range_max)
         _squadron_2:SetMissionRange(missionrange) -- Squad will be considered for targets within 200 NM of its airwing location.
         _airwing_1:AddSquadron(_squadron_2)
+    else
+        env.info("Squadron 2 did not spawn", false)
     end
 end
 
