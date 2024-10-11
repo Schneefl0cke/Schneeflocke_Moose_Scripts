@@ -99,7 +99,7 @@ local function setup_airwings()
         local _available_fighters = math.random(_fighter_min_groups, _fighter_max_groups)
         local _squadron = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_1_name)
         local _grouping = GetFighterGroupingCount()
-        env.info("Squadron 1 spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
+        env.info("Squadron 1 spawned with " .. _available_fighters .. " groups and a grouping of " .. _grouping, false)
         _squadron:SetGrouping(_grouping) -- Random grouping
 	    _squadron:SetModex(100)  -- Tail number of the sqaud start with 130, 131,...
 	    _squadron:AddMissionCapability({AUFTRAG.Type.INTERCEPT}, _fighter_type_1_capability) -- Squad can do intercept missions.
@@ -117,7 +117,7 @@ local function setup_airwings()
         local _available_fighters = math.random(_fighter_min_groups, _fighter_max_groups)
         local _squadron_2 = SQUADRON:New(_fighter_type_2, _available_fighters, _name_of_faction .. _squadron_2_name)
         local _grouping = GetFighterGroupingCount()
-        env.info("Squadron 2 spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
+        env.info("Squadron 2 spawned with " .. _available_fighters .. " groups and a grouping of " .. _grouping, false)
         _squadron:SetGrouping(_grouping) -- Random grouping
         _squadron_2:SetModex(200)  -- Tail number of the sqaud start with 130, 131,...
         _squadron_2:AddMissionCapability({AUFTRAG.Type.INTERCEPT}, _fighter_type_2_capability) -- Squad can do intercept missions.
