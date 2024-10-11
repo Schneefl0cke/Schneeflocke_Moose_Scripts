@@ -13,7 +13,10 @@ math.random()
 math.random()
 math.random()
 env.info("Starting Schneeflocke Omnien CAP!", false)
+MESSAGE:New( "Starting Schneeflocke Omnien CAP!", 10, "INFO" ):ToAll()
 -- ****
+
+do
 
 -- General variables
 local _faction_red = true --set to false if you want a blue CAP/Intercept
@@ -27,8 +30,10 @@ local _cap_zone_1_name = "Red_Bandar_AirZone"
 local _cap_zone_2_name = "Red_Kish_AirZone"
 
 -- Fighter Setup. If you want to add more airframe variation, you must extend the GetFighterType function!
-local _fighter_min = 4 -- the minnimum available fighters per squadron
-local _fighter_max = 8 -- maximal available fighters per squadron
+local _fighter1_min_groups = 1 -- the minnimum available groups per squadron
+local _fighter1_max_groups = 3 -- maximal available groups per squadron
+local _fighter2_min_groups = 1 -- the minnimum available groups per squadron
+local _fighter2_max_groups = 2 -- maximal available groups per squadron
 local _mission_range_min = 100
 local _mission_range_max = 200
 
@@ -38,8 +43,8 @@ local _readiness_fighter_1 = 85 -- Propability that the fighters are on station,
 local _fighter_type_1_capability = 50 -- how good is the fighter
 
 local _fighter_type_2 = "Omnien-AF-F-5" -- Name of the unit in DCS. Give the unit the correct loadout and skin!
-local _readiness_fighter_2 = 70 -- Propability that the fighters are on station, or all are grounded. As percentage value of 100
-local _fighter_type_2_capability = 70
+local _readiness_fighter_2 = 65 -- Propability that the fighters are on station, or all are grounded. As percentage value of 100
+local _fighter_type_2_capability = 75
 --
 
 --warehouses
@@ -105,7 +110,7 @@ local function setup_airwing_1 ()
 
     -- SQUADRON 1
     if math.random(_readiness_fighter_1) < 100 then
-        local _available_fighters = math.random(_fighter_min, _fighter_max)
+        local _available_fighters = math.random(_fighter1_min_groups, _fighter1_max_groups)
         local _squadron = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_1_name)
         local _grouping = GetFighterGroupingCount()
         env.info("Squadron 1 Bandar Abbas spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
@@ -123,7 +128,7 @@ local function setup_airwing_1 ()
 
     -- SQUADRON 2
     if math.random(_readiness_fighter_2) < 100 then
-        local _available_fighters = math.random(_fighter_min, _fighter_max)
+        local _available_fighters = math.random(_fighter2_min_groups, _fighter2_max_groups)
         local _squadron_2 = SQUADRON:New(_fighter_type_2, _available_fighters, _name_of_faction .. _squadron_2_name)
         local _grouping = GetFighterGroupingCount()
         env.info("Squadron 2 Bandar Abbas spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
@@ -150,10 +155,10 @@ local function setup_airwing_2()
 
     -- SQUADRON 3
     if math.random(_readiness_fighter_1) < 100 then
-        local _available_fighters = math.random(_fighter_min, _fighter_max)
+        local _available_fighters = math.random(_fighter1_min_groups, _fighter1_max_groups)
         local _squadron_3 = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_3_name)
         local _grouping = GetFighterGroupingCount()
-        env.info("Squadron 3 Kish spawned with " .. _available_fighters .. "scriptfighters and a grouping of " .. _grouping, false)
+        env.info("Squadron 3 Kish spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
         _squadron_3:SetGrouping(_grouping) -- Random grouping
 	    _squadron_3:SetModex(300)  -- Tail number of the sqaud start with 130, 131,...
 	    _squadron_3:AddMissionCapability({AUFTRAG.Type.INTERCEPT}, _fighter_type_1_capability) -- Squad can do intercept missions.
@@ -185,3 +190,4 @@ setup_airwing_1()
 setup_airwing_2()
 setup_cap_zones() -- CAP is only spawned at day!
 _fighter_command:__Start(1)
+end

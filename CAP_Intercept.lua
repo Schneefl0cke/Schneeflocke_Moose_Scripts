@@ -10,7 +10,9 @@
 math.random()
 math.random()
 math.random()
+
 env.info("Starting CAP Script", false)
+MESSAGE:New( "Starting CAP Script", 10, "INFO" ):ToAll()
 -- ****
 
 -- General variables
@@ -24,8 +26,8 @@ local _homeland = ZONE_POLYGON:NewFromGroupName("Homeland") --Create a unit call
 local _cap_zone_1_name = "CAP ZONE 1"
 
 -- Fighter Setup. If you want to add more airframe variation, you must extend the GetFighterType function!
-local _fighter_min = 4 -- the minnimum available fighters per squadron
-local _fighter_max = 8 -- maximal available fighters per squadron
+local _fighter_min_groups = 4 -- the minnimum available groups per squadron
+local _fighter_max_groups = 8 -- maximal available groups per squadron
 local _mission_range_min = 100
 local _mission_range_max = 200
 
@@ -94,7 +96,7 @@ local function setup_airwings()
 
     -- SQUADRON 1
     if math.random(_readiness_fighter_1) < 100 then
-        local _available_fighters = math.random(_fighter_min, _fighter_max)
+        local _available_fighters = math.random(_fighter_min_groups, _fighter_max_groups)
         local _squadron = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_1_name)
         local _grouping = GetFighterGroupingCount()
         env.info("Squadron 1 spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
@@ -112,7 +114,7 @@ local function setup_airwings()
 
     -- SQUADRON 2
     if math.random(_readiness_fighter_2) < 100 then
-        local _available_fighters = math.random(_fighter_min, _fighter_max)
+        local _available_fighters = math.random(_fighter_min_groups, _fighter_max_groups)
         local _squadron_2 = SQUADRON:New(_fighter_type_2, _available_fighters, _name_of_faction .. _squadron_2_name)
         local _grouping = GetFighterGroupingCount()
         env.info("Squadron 2 spawned with " .. _available_fighters .. " fighters and a grouping of " .. _grouping, false)
