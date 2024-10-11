@@ -33,7 +33,7 @@ local _cap_zone_2_name = "Red_Kish_AirZone"
 local _fighter1_min_groups = 1 -- the minnimum available groups per squadron
 local _fighter1_max_groups = 3 -- maximal available groups per squadron
 local _fighter2_min_groups = 1 -- the minnimum available groups per squadron
-local _fighter2_max_groups = 2 -- maximal available groups per squadron
+local _fighter2_max_groups = 1 -- maximal available groups per squadron
 local _mission_range_min = 100
 local _mission_range_max = 200
 
@@ -53,11 +53,11 @@ local _warehouse_2 = "Warehouse Kish" -- You need to add a structure next to an 
 --
 
 -- names
-local _airwing_1_name = "Airwing 1"
-local _airwing_2_name = "Airwing 2"
-local _squadron_1_name = " Squadron 1" -- space because it will be merged with faction name
-local _squadron_2_name = " Squadron 2"
-local _squadron_3_name = " Squadron 3"
+local _airwing_1_name = "Airwing 1 Bandar"
+local _airwing_2_name = "Airwing 2 Kish"
+local _squadron_1_name = " Squadron 1 - A4 Bandar Hawks" -- space because it will be merged with faction name
+local _squadron_2_name = " Squadron 2 - F5 Bandar Tigers"
+local _squadron_3_name = " Squadron 3 - A4 Kish Eagles"
 
 -- How is the grouping of the enemy flights? The sum does not need to be 100
 local _propability_1_ship_flight = 40
