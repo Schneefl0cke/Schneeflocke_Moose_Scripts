@@ -30,7 +30,7 @@ local _cap_zone_1_name = "Red_Bandar_AirZone"
 local _cap_zone_2_name = "Red_Kish_AirZone"
 
 -- Fighter Setup. If you want to add more airframe variation, you must extend the GetFighterType function!
-local _fighter1_min_groups = 1 -- the minnimum available groups per squadron
+local _fighter1_min_groups = 2 -- the minnimum available groups per squadron
 local _fighter1_max_groups = 3 -- maximal available groups per squadron
 local _fighter2_min_groups = 1 -- the minnimum available groups per squadron
 local _fighter2_max_groups = 1 -- maximal available groups per squadron
@@ -109,7 +109,7 @@ local function setup_airwing_1 ()
     --******
 
     -- SQUADRON 1
-    if math.random(_readiness_fighter_1) < 100 then
+    if math.random(100) < _readiness_fighter_1 then
         local _available_fighters = math.random(_fighter1_min_groups, _fighter1_max_groups)
         local _squadron = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_1_name)
         local _grouping = GetFighterGroupingCount()
@@ -127,7 +127,7 @@ local function setup_airwing_1 ()
     end
 
     -- SQUADRON 2
-    if math.random(_readiness_fighter_2) < 100 then
+    if math.random(100) < _readiness_fighter_2 then
         local _available_fighters = math.random(_fighter2_min_groups, _fighter2_max_groups)
         local _squadron_2 = SQUADRON:New(_fighter_type_2, _available_fighters, _name_of_faction .. _squadron_2_name)
         local _grouping = GetFighterGroupingCount()
@@ -154,7 +154,7 @@ local function setup_airwing_2()
      --******
 
     -- SQUADRON 3
-    if math.random(_readiness_fighter_1) < 100 then
+    if math.random(100) < _readiness_fighter_1 then
         local _available_fighters = math.random(_fighter1_min_groups, _fighter1_max_groups)
         local _squadron_3 = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_3_name)
         local _grouping = GetFighterGroupingCount()

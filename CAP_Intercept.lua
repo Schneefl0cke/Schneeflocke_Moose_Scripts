@@ -95,7 +95,7 @@ local function setup_airwings()
     --******
 
     -- SQUADRON 1
-    if math.random(_readiness_fighter_1) < 100 then
+    if math.random(100) < _readiness_fighter_1 then
         local _available_fighters = math.random(_fighter_min_groups, _fighter_max_groups)
         local _squadron = SQUADRON:New(_fighter_type_1, _available_fighters, _name_of_faction .. _squadron_1_name)
         local _grouping = GetFighterGroupingCount()
@@ -113,7 +113,7 @@ local function setup_airwings()
     end 
 
     -- SQUADRON 2
-    if math.random(_readiness_fighter_2) < 100 then
+    if math.random(100) < _readiness_fighter_2 then
         local _available_fighters = math.random(_fighter_min_groups, _fighter_max_groups)
         local _squadron_2 = SQUADRON:New(_fighter_type_2, _available_fighters, _name_of_faction .. _squadron_2_name)
         local _grouping = GetFighterGroupingCount()
